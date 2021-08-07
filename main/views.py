@@ -16,7 +16,8 @@ def index(response, id):
 
 def home(response):
     # return HttpResponse("<h2>view 1</h2>")
-    return render(response, 'main/home.html', {})
+    todos = ToDoList.objects.all()
+    return render(response, 'main/home.html', {"todos": todos})
 
 
 def create(response):
