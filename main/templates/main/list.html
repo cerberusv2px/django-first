@@ -4,13 +4,22 @@
 
 {% block content %}
     <h1>{{ ls.name }}</h1>
-    <ul>
-        {% for item in ls.item_set.all %}
-            {% if item.complete == False %}
-                <li>{{ item.text }}</li>
-            {% else %}
-                <li><del>{{ item.text }}</del></li>
-            {% endif %}
-        {% endfor %}
-    </ul>
+    <form method="post" action="#">
+        <ul>
+            {% for item in ls.item_set.all %}
+                {% if item.complete == False %}
+                    <li>{{ item.text }}</li>
+                {% else %}
+                    <li>
+                        <del>{{ item.text }}</del>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+        <button type="submit" name="save" value="save">Save</button>
+        <input type="text" name="new">
+        <button type="submit" name="newItem" value="newItem">Add Item</button>
+
+    </form>
+
 {% endblock %}
